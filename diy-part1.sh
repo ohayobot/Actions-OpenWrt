@@ -1,3 +1,5 @@
-# 添加额外插件源
-sed -i '$a src-git kenzok8 https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small-package' feeds.conf.default
+# 移除可能冲突的源
+sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+
+# 添加核心插件源 (只保留这一个最全的，减少冲突)
+sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
